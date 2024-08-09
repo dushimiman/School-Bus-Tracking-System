@@ -1,0 +1,22 @@
+.contact-form{
+    background-image: url(../Assets/pexels-photo-5762586.jpeg);
+    background: rgba(0, 0, 0, 0.514);
+    background-position: center;
+    /* transform: rotate(20deg); */
+    
+    height: 40vh;
+    width: 40%;
+    margin-top: 5%; 
+    margin-left: 20%;
+    color: cornsilk
+    
+
+}
+.contact h1{
+
+    color: cornsilk;
+    margin-left: 30%;
+}
+.contact-form button{
+    margin-left: 50%;
+}

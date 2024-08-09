@@ -1,0 +1,44 @@
+.aboutus-container{
+    background-image: url(../Assets/pexels-photo-5762586.jpeg);
+    background: rgba(0, 0, 0, 0.514);
+    background-position: center;
+    transform: rotate(20deg);
+    
+    height: 35vh;
+    width: 40%;
+    margin-top: 5%; 
+    margin-left: 20%;
+    border-radius: 5%;
+    
+}
+.pragraph{
+    text-align: center;
+    color: cornsilk;
+}
+
+  
+
+.about-us{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.767);
+    background-position: center;
+    background-size: cover; 
+    height: 30vh; 
+    margin-top: 5%;
+    
+    
+}
+
+p{
+    color: cornsilk;
+    margin: 0px 90px;
+}
+.about h1{
+    color: cornsilk;
+}
+.about1 h1{
+    color: cornsilk;
+}
+.pragraph h1{
+    color: cornsilk;
+}
