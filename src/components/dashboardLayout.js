@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./dashboardLayout.css";
-// import ReactDOM from 'react-dom';
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
@@ -10,8 +9,11 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
-  FastForwardOutlined 
+  FastForwardOutlined,
+  CarOutlined
 } from "@ant-design/icons";
+
+
 const { Header, Sider, Content } = Layout;
 
 const DashLayout = ({ children }) => {
@@ -19,26 +21,30 @@ const DashLayout = ({ children }) => {
   const toggle = () => {
     setCollapsed(!collapsed);
   };
+
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed} style={{height:"150vh"}}> 
+      <Sider trigger={null} collapsible collapsed={collapsed} style={{ height: "150vh" }}>
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
-            <Link to="/dash/NewDevice"> Add Device </Link>
+         
+         
+         
+          <Menu.Item key="4" icon={<CarOutlined />}>
+            <Link to="/dash/AddBus"> Add Bus Details </Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            <Link to="/dash/AllDevices"> All Device  </Link>
+          <Menu.Item key="5" icon={<CarOutlined />}>
+            <Link to="/dash/AddSchool"> Add School </Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<FastForwardOutlined />}>
-            <Link to="/dash/allTours"> Track  </Link>
+          <Menu.Item key="3" icon={<FastForwardOutlined />}>
+            <Link to="/dash/allTours"> Track </Link>
           </Menu.Item>
           <Menu.Item
-            key="3"
+            key="6"
             icon={<UploadOutlined />}
             onClick={() => localStorage.removeItem("userLogedIn")}
           >
-            <Link to="/home">Logout</Link>
+            <Link to="/">Logout</Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -60,10 +66,12 @@ const DashLayout = ({ children }) => {
             minHeight: 280,
           }}
         >
-          {children}
+          {/* Render HomeDashboard here */}
+          {children} {/* This is where additional content will be rendered */}
         </Content>
       </Layout>
     </Layout>
   );
 };
+
 export default DashLayout;

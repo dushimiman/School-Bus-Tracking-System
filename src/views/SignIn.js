@@ -1,5 +1,4 @@
 import React from "react";
-import HomeLayout from "../components/homeLayout";
 function Login(props) {
     const username = ('');
     const password = ('');
