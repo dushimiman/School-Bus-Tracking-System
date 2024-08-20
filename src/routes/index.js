@@ -2,11 +2,12 @@ import React from "react"
 import Home from "../views/home";
 import{Routes, Route, useLocation} from "react-router-dom";
 import SignIn from "../views/SignIn";
-import DevicesList from '../views/Dashboard/AllDevices'
 import DashLayout from '../components/dashboardLayout'
 import DeviceTracking from '../views/Dashboard/DeviceTracking'
 import AddBus from "../views/Dashboard/AddBus";
 import AddSchool from "../views/Dashboard/AddSchool";
+import AddChild from "../views/Dashboard/AddChild";
+import SchoolsList from '../components/SchoolList'
 const isUserLogedIn = localStorage.getItem("userLogedIn");
 const Index=()=>{
     const currentUrl=useLocation().pathname;
@@ -28,7 +29,8 @@ return(
                 <Routes>
                 <Route path="/dash/AddBus" element={<AddBus/>}></Route>
                     <Route path="/dash/AddSchool" element={<AddSchool />}></Route>
-                    <Route path="/dash/AllDevices" element={< DevicesList />}></Route>
+                    <Route path="/dash/AddChild" element={< AddChild />}></Route>
+                    <Route path="Schools" element={<SchoolsList />} />
                     <Route path="/dash/DeviceTracking" element={< DeviceTracking />}></Route>
                 </Routes>
 
