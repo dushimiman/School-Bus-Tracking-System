@@ -1,5 +1,49 @@
-/* home.css */
+.home-bg {
+    background-image: url('../Assets/backimage.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Centered h1 at the top */
+h1 {
+    position: absolute;
+    top: 20px; /* Adjust this value to move the title further down if needed */
+    width: 100%; /* Ensures the text stays centered */
+    text-align: center;
+    font-size: 36px; /* Adjust the size if needed */
+    color: cornsilk; /* Set color to cornsilk */
+    margin: 0;
+}
+
+/* Positioning .data-container to the right and vertically centered */
+.data-container {
+    position: absolute;
+    right: 5%; /* Adjust to move it closer or farther from the right */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%; /* Adjust width if necessary */
+    color: cornsilk;
+    text-align: left; /* Keep the content aligned to the left */
+}
+
 p {
-    font-size: 17px; /* Adjust this value as needed */
-    line-height: 1.5;
+    font-size: 18px;
+    color: cornsilk;
+}
+
+h4 {
+    font-size: 24px;
+    color: cornsilk;
 }

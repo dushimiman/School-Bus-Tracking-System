@@ -7,7 +7,9 @@ const { Option } = Select;
 const AddChild = () => {
   const [form] = Form.useForm();
   const [schools, setSchools] = useState([]);
+  const [destinations, setDestinations] = useState([]);
 
+  // Fetch schools
   useEffect(() => {
     const fetchSchools = async () => {
       try {
@@ -28,7 +30,30 @@ const AddChild = () => {
     fetchSchools();
   }, []);
 
+  // Fetch destinations
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/destinations', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assumes JWT token is stored in localStorage
+          },
+        });
+        setDestinations(response.data);
+      } catch (error) {
+        notification.error({
+          message: 'Error',
+          description: 'Failed to fetch destinations',
+        });
+      }
+    };
+
+    fetchDestinations();
+  }, []);
+
   const onFinish = async (values) => {
+    console.log('Form values:', values); // Log form values
+
     try {
       const response = await axios.post('http://localhost:5000/api/addChild', values, {
         headers: {
@@ -90,7 +115,7 @@ const AddChild = () => {
         </Form.Item>
 
         <Form.Item
-          name="school"
+          name="schoolId"
           label="School"
           rules={[{ required: true, message: 'Please select a school!' }]}
         >
@@ -98,6 +123,20 @@ const AddChild = () => {
             {schools.map((school) => (
               <Option key={school._id} value={school._id}>
                 {school.name}
+              </Option>
+            ))}
+          </Select>
+        </Form.Item>
+
+        <Form.Item
+          name="destinationId"
+          label="Destination"
+          rules={[{ required: true, message: 'Please select a destination!' }]}
+        >
+          <Select placeholder="Select a destination">
+            {destinations.map((destination) => (
+              <Option key={destination._id} value={destination._id}>
+                {destination.destinationName}
               </Option>
             ))}
           </Select>

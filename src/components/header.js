@@ -23,24 +23,25 @@ const Header = () => {
 
     return (
         <>
-            <Modal 
-                visible={visible}
-                width="40%"
-                onOk={() => setVisible(false)}
-                onCancel={() => setVisible(false)}
-            >
-                <h1>Signin Form</h1>
-                <Form onFinish={onFinish}>
-                    <Form.Item label="Email" name="email" rules={[{ required: true, type: "email" }]}>
-                        <Input type="email" />
-                    </Form.Item>
-                    <Form.Item label="Password" name="password" rules={[{ required: true }]}>
-                        <Input type="password" />
-                    </Form.Item>
-                    <Button htmlType="submit">Login</Button>
-                </Form>
-            </Modal>
-            <div className="container">
+          <Modal
+  open={visible} // Change 'visible' to 'open'
+  width="40%"
+  onOk={() => setVisible(false)}
+  onCancel={() => setVisible(false)}
+>
+  {/* <h1>Signin Form</h1> */}
+  <Form onFinish={onFinish}>
+    <Form.Item label="Email" name="email" rules={[{ required: true, type: "email" }]}>
+      <Input type="email" />
+    </Form.Item>
+    <Form.Item label="Password" name="password" rules={[{ required: true }]}>
+      <Input type="password" />
+    </Form.Item>
+    <Button htmlType="submit">Login</Button>
+  </Form>
+</Modal>
+
+          <div className="container">
                 <div className="row align-items-center">
                     <div className="col-12 col-md-4 logo">
                         <img src={logo1} alt="Logo" />

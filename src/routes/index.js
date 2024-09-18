@@ -8,6 +8,7 @@ import AddBus from "../views/Dashboard/AddBus";
 import AddSchool from "../views/Dashboard/AddSchool";
 import AddChild from "../views/Dashboard/AddChild";
 import SchoolsList from '../components/SchoolList'
+import AddDestination from "../views/Dashboard/AddDestination";
 const isUserLogedIn = localStorage.getItem("userLogedIn");
 const Index=()=>{
     const currentUrl=useLocation().pathname;
@@ -30,6 +31,7 @@ return(
                 <Route path="/dash/AddBus" element={<AddBus/>}></Route>
                     <Route path="/dash/AddSchool" element={<AddSchool />}></Route>
                     <Route path="/dash/AddChild" element={< AddChild />}></Route>
+                    <Route path="/dash/AddDestination" element={< AddDestination  />}></Route>
                     <Route path="Schools" element={<SchoolsList />} />
                     <Route path="/dash/DeviceTracking" element={< DeviceTracking />}></Route>
                 </Routes>
