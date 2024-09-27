@@ -7,18 +7,21 @@ const AddDestination = () => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values) => {
+    console.log('Form Values:', values); // Log form values
     setLoading(true);
     try {
       const response = await axios.post('http://localhost:5000/api/addDestination', {
         destinationName: values.destinationName,
       });
-
+      console.log('Response:', response); // Log the response
+       
       notification.success({
         message: 'Destination Added',
         description: `The destination "${values.destinationName}" has been successfully added.`,
       });
       form.resetFields();
     } catch (error) {
+      console.error('Error Response:', error.response); // Log the error response
       notification.error({
         message: 'Submission Failed',
         description: error.response?.data?.message || 'An error occurred',
@@ -53,7 +56,7 @@ const AddDestination = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading}>
+          <Button type="primary" htmlType="submit" loading={loading} disabled={loading}>
             Add Destination
           </Button>
         </Form.Item>

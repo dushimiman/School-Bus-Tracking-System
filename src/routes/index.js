@@ -1,14 +1,16 @@
-import React from "react" 
+import React from "react" ;
 import Home from "../views/home";
 import{Routes, Route, useLocation} from "react-router-dom";
 import SignIn from "../views/SignIn";
 import DashLayout from '../components/dashboardLayout'
-import DeviceTracking from '../views/Dashboard/DeviceTracking'
 import AddBus from "../views/Dashboard/AddBus";
 import AddSchool from "../views/Dashboard/AddSchool";
 import AddChild from "../views/Dashboard/AddChild";
-import SchoolsList from '../components/SchoolList'
+import ChildrenDetails from "../components/ChildrenDetails";
+import BusesDetails from "../components/BusesDetails";
+import SchoolsDetails from "../components/SchoolsDetails";
 import AddDestination from "../views/Dashboard/AddDestination";
+import DriverRegistration from "../views/Dashboard/DriverRegistration";
 const isUserLogedIn = localStorage.getItem("userLogedIn");
 const Index=()=>{
     const currentUrl=useLocation().pathname;
@@ -32,8 +34,11 @@ return(
                     <Route path="/dash/AddSchool" element={<AddSchool />}></Route>
                     <Route path="/dash/AddChild" element={< AddChild />}></Route>
                     <Route path="/dash/AddDestination" element={< AddDestination  />}></Route>
-                    <Route path="Schools" element={<SchoolsList />} />
-                    <Route path="/dash/DeviceTracking" element={< DeviceTracking />}></Route>
+                    <Route path="/dash/childrenDetails" element={<ChildrenDetails />} />
+                    <Route path="/dash/busesDetails" element={<BusesDetails />} />
+                    <Route path="/dash/schoolsDetails" element={<SchoolsDetails />} />
+                    <Route path="/dash/driverRegistration" element={<DriverRegistration />} />
+                   
                 </Routes>
 
             </DashLayout>  )
