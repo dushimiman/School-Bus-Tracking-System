@@ -7,28 +7,28 @@ const { Option } = Select;
 const DriverRegistration = () => {
   const [driverDetails, setDriverDetails] = useState({
     name: "",
-    licenseCategory: "", // Changed from licenseNumber
+    licenseCategory: "",
     phoneNumber: "",
-    busPlateNumber: "", // Changed from busId
+    bus: "", // Will store the bus ObjectId
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [busPlateNumbers, setBusPlateNumbers] = useState([]); // To store fetched bus plate numbers
+  const [busList, setBusList] = useState([]); // To store the bus objects
 
-  // Fetch bus plate numbers from the backend
+  // Fetch bus list from the backend
   useEffect(() => {
-    const fetchBusPlateNumbers = async () => {
+    const fetchBusList = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/buses"); // API to fetch plate numbers
-        setBusPlateNumbers(response.data); // Assuming response.data contains an array of plate numbers
+        const response = await axios.get("http://localhost:5000/api/buses");
+        setBusList(response.data); // Assuming response.data contains an array of bus objects
       } catch (error) {
-        console.error("Error fetching bus plate numbers:", error);
+        console.error("Error fetching bus list:", error);
       }
     };
 
-    fetchBusPlateNumbers();
+    fetchBusList();
   }, []);
 
   const handleInputChange = (e) => {
@@ -46,10 +46,10 @@ const DriverRegistration = () => {
     });
   };
 
-  const handleBusPlateNumberChange = (value) => {
+  const handleBusChange = (value) => {
     setDriverDetails({
       ...driverDetails,
-      busPlateNumber: value,
+      bus: value, // Assign the bus ObjectId
     });
   };
 
@@ -61,7 +61,7 @@ const DriverRegistration = () => {
     try {
       await axios.post("http://localhost:5000/api/drivers", driverDetails); // Endpoint to save driver
       setSuccess("Driver registered successfully!");
-      setDriverDetails({ name: "", licenseCategory: "", phoneNumber: "", busPlateNumber: "" });
+      setDriverDetails({ name: "", licenseCategory: "", phoneNumber: "", bus: "" });
     } catch (error) {
       setError("Failed to register driver. Please try again.");
     } finally {
@@ -107,20 +107,19 @@ const DriverRegistration = () => {
           />
         </Form.Item>
 
-        <Form.Item label="Bus Plate Number" required>
-  <Select
-    value={driverDetails.busPlateNumber}
-    onChange={handleBusPlateNumberChange}
-    placeholder="Select bus plate number"
-  >
-    {busPlateNumbers.map((bus) => (
-      <Option key={bus._id} value={bus.plateNumber}>
-        {bus.plateNumber}
-      </Option>
-    ))}
-  </Select>
-</Form.Item>
-
+        <Form.Item label="Bus" required>
+          <Select
+            value={driverDetails.bus}
+            onChange={handleBusChange}
+            placeholder="Select bus"
+          >
+            {busList.map((bus) => (
+              <Option key={bus._id} value={bus._id}>
+                {bus.plateNumber}
+              </Option>
+            ))}
+          </Select>
+        </Form.Item>
 
         <Button type="primary" htmlType="submit" disabled={loading}>
           Register Driver

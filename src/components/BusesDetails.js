@@ -52,7 +52,6 @@ const BusesDetails = () => {
       render: (text) => new Date(text).toLocaleString(), // Format date
     },
   ];
-  
 
   if (loading) {
     return <Spin tip="Loading buses details..." />;
